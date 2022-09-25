@@ -5,15 +5,12 @@ import java.io.InputStreamReader;
 public class Calculator {
     Utils utils = new Utils();
 
-    public Calculator() {
-    }
-
     public void start() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         do {
             System.out.print("Введите выражение: ");
-            this.parseExpression(reader.readLine());
+            parseExpression(reader.readLine());
             System.out.print("Хотите продолжить? (введите 'ex' - для выхода) ");
         } while(!reader.readLine().equals("ex"));
 
@@ -41,7 +38,7 @@ public class Calculator {
         if (arabian) {
             System.out.println(res);
         } else {
-            System.out.println(this.utils.toRomanDigit(res));
+            System.out.println(utils.toRomanDigit(res));
         }
 
         return true;
@@ -51,18 +48,18 @@ public class Calculator {
         String[] s = input.split(" ");
         if (s.length == 3 && s[1].length() == 1) {
             boolean arabian = false;
-            int a = this.utils.getRomanDigit(s[0]);
+            int a = utils.getRomanDigit(s[0]);
             int b;
             if (a == 0) {
                 arabian = true;
-                a = this.utils.getDigit(s[0]);
-                b = this.utils.getDigit(s[2]);
+                a = utils.getDigit(s[0]);
+                b = utils.getDigit(s[2]);
             } else {
-                b = this.utils.getRomanDigit(s[2]);
+                b = utils.getRomanDigit(s[2]);
             }
 
             if (a > 0 && b > 0) {
-                if (!this.calculate(a, b, s[1], arabian)) {
+                if (!calculate(a, b, s[1], arabian)) {
                     throw new IllegalArgumentException("Неверная операция!");
                 }
             } else {

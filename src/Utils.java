@@ -1,6 +1,4 @@
 public class Utils {
-    public Utils() {
-    }
 
     public String toRomanDigit(int digit) {
         if (digit < 0) {
@@ -41,8 +39,8 @@ public class Utils {
         try {
             int digit = Integer.parseInt(s);
             return digit > 10 ? 0 : digit;
-        } catch (NumberFormatException var3) {
-            throw new NumberFormatException("" + var3 + ". Введена некорректная цифра!");
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException(e + ". Введена некорректная цифра!");
         }
     }
 }
